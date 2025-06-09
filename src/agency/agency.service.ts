@@ -20,7 +20,7 @@ async registerAgency(createAgency:createAgencyDTO):Promise<Agency>{
         throw new ConflictException('This email is already linked with another agency')
     }
     const hashedPassword=await bcrypt.hash(createAgency.password,10)
-    const agency= new this.agencyModel({...createAgency,hashedPassword})
+    const agency= new this.agencyModel({...createAgency,password:hashedPassword})
     agency.save()
     return agency
 }
