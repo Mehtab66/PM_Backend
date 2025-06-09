@@ -27,8 +27,8 @@ async registerAgency(createAgency:createAgencyDTO):Promise<Agency>{
 async login(loginDto: loginAgencyDTO) {
     const agency = await this.agencyModel.findOne({
       $or: [
-        { email: loginDto.identifier },
-        { username: loginDto.identifier },
+        { email: loginDto.email },
+        { username: loginDto.username },
       ],
     });
     if (!agency) throw new UnauthorizedException('Invalid credentials');

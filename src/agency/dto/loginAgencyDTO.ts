@@ -1,5 +1,6 @@
-import { IsEmail, IsOptional } from "class-validator";
+import { IsEmail, IsOptional, validate } from "class-validator";
 import { ApiProperty } from '@nestjs/swagger';
+
 export class loginAgencyDTO{
   @ApiProperty({
     description: 'Email address of the agency',
@@ -21,8 +22,7 @@ email?:string;
     description: 'Password  of the agency',
     example: 'travel@123',
   })
-password;
-    identifier: unknown;
+password:string;
 validate() {
     if (!this.email && !this.username) {
       throw new Error('Either email or username must be provided');
