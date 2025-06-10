@@ -45,7 +45,7 @@ async loginUser(loginUser:loginDto){
     
         const payload = { sub: user._id, email: user.email, username: user.username };
         const token = this.jwtService.sign(payload);
-        return{token}
+        return{token,user}
 }
 
 }

@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { createUserDto } from './dto/createUser';
 import { loginDto } from './dto/loginUser';
@@ -12,6 +12,10 @@ export class UserController {
 
     //create User 
     @Post('createUser')
+    @ApiOperation({summary:'create User'})
+    @ApiBody({type:loginDto
+        
+    })
     async createUser(@Body() createUser:createUserDto){
         return this.userService.createUser(createUser)
     }

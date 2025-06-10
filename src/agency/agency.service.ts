@@ -39,6 +39,6 @@ async login(loginDto: loginAgencyDTO) {
     const payload = { sub: agency._id, email: agency.email, username: agency.username };
     const token = this.jwtService.sign(payload);
 
-    return { token };
+    return { token,agency };
   }
 }
